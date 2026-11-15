@@ -1,0 +1,650 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Happy Birthday ❤️</title>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700;800;900&family=Orbitron:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+
+/* =========================
+   GENERAL SETTINGS
+========================= */
+
+:root {
+    --primary: #00ff88;
+    --background: #020609;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--background);
+    color: white;
+    font-family: 'Tajawal', sans-serif;
+    overflow-x: hidden;
+    min-height: 100vh;
+    transition: background 0.5s;
+}
+
+#matrix {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    opacity: 0.35;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(
+        circle at center,
+        #063b2640,
+        transparent 65%
+    );
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* =========================
+   MAIN CONTAINER
+========================= */
+
+.container {
+    width: 90%;
+    max-width: 850px;
+    margin: auto;
+    padding: 45px 0;
+    text-align: center;
+}
+
+.tag {
+    color: var(--primary);
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 4px;
+    font-size: 13px;
+    margin-bottom: 20px;
+    text-shadow: 0 0 15px var(--primary);
+}
+
+h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(35px, 8vw, 75px);
+    color: var(--primary);
+    text-shadow:
+        0 0 10px var(--primary),
+        0 0 30px var(--primary),
+        0 0 60px var(--primary);
+    animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+    from { filter: brightness(0.8); }
+    to { filter: brightness(1.5); }
+}
+
+.name {
+    font-size: 32px;
+    font-weight: 800;
+    color: white;
+    margin-top: 15px;
+    text-shadow: 0 0 20px var(--primary);
+}
+
+.subtitle {
+    color: #aaa;
+    margin: 15px 0 30px;
+    font-size: 17px;
+}
+
+/* =========================
+   CARDS
+========================= */
+
+.card {
+    background: rgba(0, 20, 15, 0.85);
+    border: 1px solid color-mix(in srgb, var(--primary) 45%, transparent);
+    border-radius: 20px;
+    padding: 30px 20px;
+    margin: 25px 0;
+    box-shadow: 0 0 25px #00ff8820;
+    backdrop-filter: blur(10px);
+    transition: 0.4s;
+}
+
+.card:hover {
+    box-shadow: 0 0 35px #00ff8860;
+    transform: translateY(-4px);
+}
+
+.card h2 {
+    color: var(--primary);
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: 800;
+}
+
+.message {
+    line-height: 2.2;
+    font-size: 18px;
+    font-weight: 500;
+    color: #eee;
+    white-space: pre-wrap;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+button {
+    border: none;
+    padding: 14px 30px;
+    border-radius: 30px;
+    background: var(--primary);
+    color: #00150c;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 10px;
+    transition: 0.3s;
+    font-family: 'Tajawal', sans-serif;
+}
+
+button:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 25px var(--primary);
+}
+
+.upload {
+    display: inline-block;
+    padding: 12px 20px;
+    background: var(--primary);
+    color: #00150c;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: bold;
+    margin: 15px 0;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+/* =========================
+   PHOTO GALLERY
+========================= */
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.gallery img {
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 1px solid var(--primary);
+    transition: 0.4s;
+}
+
+.gallery img:hover {
+    transform: scale(1.04);
+    box-shadow: 0 0 20px var(--primary);
+}
+
+/* =========================
+   FLOATING EFFECTS
+========================= */
+
+.heart {
+    position: fixed;
+    bottom: -30px;
+    color: var(--primary);
+    font-size: 20px;
+    animation: floatUp 5s linear forwards;
+    pointer-events: none;
+    z-index: 5;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) rotate(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    color: #777;
+    margin-top: 35px;
+    font-size: 13px;
+    line-height: 2;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width: 600px) {
+
+    .container {
+        width: 92%;
+    }
+
+    .card {
+        padding: 22px 15px;
+    }
+
+    .gallery img {
+        height: 145px;
+    }
+
+    .name {
+        font-size: 25px;
+    }
+
+    .message {
+        font-size: 16px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<canvas id="matrix"></canvas>
+
+<div class="container">
+
+    <div class="tag" id="tag"></div>
+
+    <h1 id="mainTitle"></h1>
+
+    <div class="name" id="personName"></div>
+
+    <p class="subtitle" id="subtitle"></p>
+
+    <button onclick="celebrate()" id="celebrateButton"></button>
+
+    <!-- Birthday Message -->
+
+    <div class="card">
+
+        <h2 id="messageTitle"></h2>
+
+        <p class="message" id="birthdayMessage"></p>
+
+    </div>
+
+    <!-- Photo Gallery -->
+
+    <div class="card">
+
+        <h2 id="galleryTitle"></h2>
+
+        <label class="upload" for="photoInput" id="uploadButton"></label>
+
+        <input
+            type="file"
+            id="photoInput"
+            accept="image/*"
+            multiple
+        >
+
+        <div class="gallery" id="gallery"></div>
+
+    </div>
+
+    <!-- Final Message -->
+
+    <div class="card">
+
+        <h2 id="finalTitle"></h2>
+
+        <p class="message" id="finalMessage"></p>
+
+    </div>
+
+    <footer id="footer"></footer>
+
+</div>
+
+
+<script>
+
+/* =====================================
+   🎂 WEBSITE SETTINGS
+   غير النصوص من هنا فقط
+===================================== */
+
+const birthdaySettings = {
+
+    // اسم صاحب عيد الميلاد
+    name: "شخص مميز ❤️",
+
+    // العنوان الرئيسي
+    mainTitle: "HAPPY<br>BIRTHDAY",
+
+    // العنوان الصغير
+    tag: "SYSTEM MESSAGE // 2026",
+
+    subtitle: "Today is not just another day... It's YOUR DAY!",
+
+    // رسالة التهنئة
+    messageTitle: "💌 رسالة خاصة ليك",
+
+    message: `
+كل سنة وأنت طيب ❤️
+
+أتمنى تكون سنتك الجديدة مليانة سعادة ونجاح،
+وتحقق فيها كل الأحلام اللي نفسك فيها.
+
+خليك دايماً مميز زي ما أنت،
+وافتكر إن وجودك في حياة الناس هدية جميلة.
+
+عيد ميلاد سعيد 🎂✨
+    `,
+
+    // الصور
+    galleryTitle: "📸 ذكرياتنا الجميلة",
+
+    uploadButton: "+ أضف صورك",
+
+    // الرسالة الأخيرة
+    finalTitle: "🎂 A New Chapter Begins",
+
+    finalMessage: `
+New age.
+New dreams.
+New opportunities.
+
+Keep shining and never stop being amazing! ✨
+    `,
+
+    // الأزرار
+    celebrateButton: "🎉 اضغط لبدء الاحتفال",
+
+    alertMessage: "🎉 HAPPY BIRTHDAY! ❤️",
+
+    // الفوتر
+    footer: "MADE WITH ❤️ JUST FOR YOU",
+
+    // ألوان الموقع
+    primaryColor: "#00ff88",
+
+    backgroundColor: "#020609",
+
+    // سرعة تساقط الأكواد
+    matrixSpeed: 45,
+
+    // تكرار القلوب بالمللي ثانية
+    heartSpeed: 1200
+
+};
+
+
+/* =====================================
+   APPLY WEBSITE SETTINGS
+===================================== */
+
+function applySettings() {
+
+    document.getElementById("personName").textContent =
+        birthdaySettings.name;
+
+    document.getElementById("mainTitle").innerHTML =
+        birthdaySettings.mainTitle;
+
+    document.getElementById("tag").textContent =
+        birthdaySettings.tag;
+
+    document.getElementById("subtitle").textContent =
+        birthdaySettings.subtitle;
+
+    document.getElementById("messageTitle").textContent =
+        birthdaySettings.messageTitle;
+
+    document.getElementById("birthdayMessage").textContent =
+        birthdaySettings.message.trim();
+
+    document.getElementById("galleryTitle").textContent =
+        birthdaySettings.galleryTitle;
+
+    document.getElementById("uploadButton").textContent =
+        birthdaySettings.uploadButton;
+
+    document.getElementById("finalTitle").textContent =
+        birthdaySettings.finalTitle;
+
+    document.getElementById("finalMessage").textContent =
+        birthdaySettings.finalMessage.trim();
+
+    document.getElementById("celebrateButton").textContent =
+        birthdaySettings.celebrateButton;
+
+    document.getElementById("footer").innerHTML =
+        birthdaySettings.footer +
+        "<br>© 2026 | SPECIAL BIRTHDAY PROJECT";
+
+    document.documentElement.style.setProperty(
+        "--primary",
+        birthdaySettings.primaryColor
+    );
+
+    document.documentElement.style.setProperty(
+        "--background",
+        birthdaySettings.backgroundColor
+    );
+
+}
+
+
+/* =====================================
+   MATRIX EFFECT
+===================================== */
+
+const canvas = document.getElementById("matrix");
+const ctx = canvas.getContext("2d");
+
+const letters = "01アイウエオカキクケコサシスセソ";
+const fontSize = 16;
+
+let columns;
+let drops;
+
+function resizeMatrix() {
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    columns = Math.floor(canvas.width / fontSize);
+
+    drops = Array(columns).fill(1);
+
+}
+
+function drawMatrix() {
+
+    ctx.fillStyle = "rgba(2, 6, 9, 0.08)";
+
+    ctx.fillRect(
+        0,
+        0,
+        canvas.width,
+        canvas.height
+    );
+
+    ctx.fillStyle = birthdaySettings.primaryColor;
+
+    ctx.font = fontSize + "px monospace";
+
+    for (let i = 0; i < drops.length; i++) {
+
+        const text = letters[
+            Math.floor(Math.random() * letters.length)
+        ];
+
+        ctx.fillText(
+            text,
+            i * fontSize,
+            drops[i] * fontSize
+        );
+
+        if (
+            drops[i] * fontSize > canvas.height &&
+            Math.random() > 0.975
+        ) {
+
+            drops[i] = 0;
+
+        }
+
+        drops[i]++;
+
+    }
+
+}
+
+resizeMatrix();
+
+window.addEventListener("resize", resizeMatrix);
+
+setInterval(
+    drawMatrix,
+    birthdaySettings.matrixSpeed
+);
+
+
+/* =====================================
+   BIRTHDAY CELEBRATION
+===================================== */
+
+function celebrate() {
+
+    for (let i = 0; i < 50; i++) {
+
+        setTimeout(createHeart, i * 70);
+
+    }
+
+    alert(birthdaySettings.alertMessage);
+
+}
+
+
+/* =====================================
+   FLOATING HEARTS
+===================================== */
+
+function createHeart() {
+
+    const heart = document.createElement("div");
+
+    heart.className = "heart";
+
+    const symbols = [
+        "❤️",
+        "💚",
+        "✨",
+        "🎉",
+        "💖",
+        "⭐"
+    ];
+
+    heart.textContent =
+        symbols[Math.floor(Math.random() * symbols.length)];
+
+    heart.style.left = Math.random() * 100 + "vw";
+
+    heart.style.fontSize =
+        (15 + Math.random() * 25) + "px";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+
+        heart.remove();
+
+    }, 5000);
+
+}
+
+setInterval(
+    createHeart,
+    birthdaySettings.heartSpeed
+);
+
+
+/* =====================================
+   PHOTO UPLOAD
+===================================== */
+
+const photoInput = document.getElementById("photoInput");
+
+const gallery = document.getElementById("gallery");
+
+photoInput.addEventListener("change", function() {
+
+    const files = Array.from(this.files);
+
+    files.forEach(file => {
+
+        if (!file.type.startsWith("image/")) return;
+
+        const reader = new FileReader();
+
+        reader.onload = function(e) {
+
+            const img = document.createElement("img");
+
+            img.src = e.target.result;
+
+            img.alt = "Birthday Memory";
+
+            gallery.appendChild(img);
+
+        };
+
+        reader.readAsDataURL(file);
+
+    });
+
+    this.value = "";
+
+});
+
+
+/* =====================================
+   START WEBSITE
+===================================== */
+
+applySettings();
+
+</script>
+
+</body>
+</html>
